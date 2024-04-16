@@ -1,4 +1,3 @@
-import CodeBlock from "../../components/codeblock";
 import StepComponent from "../../components/step";
 import { Steps } from "../../data";
 import { Wrapper } from "./styles";
