@@ -1,26 +1,12 @@
-import React from "react";
 import { Step } from "../../types";
-import styled from "styled-components";
-import CodeBlock from "../codeblock";
-
-export const StepWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-`;
-
-export const SubStepWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  p {
-    min-width: fit-content;
-  }
-`;
+import { StepWrapper, SubStepWrapper, Wrapper } from "./styles";
+import { CopyBlock, dracula } from "react-code-blocks";
 
 interface Props {
   index: number;
   step: Step;
 }
+
 export default function StepComponent({ index, step }: Props) {
   const { name, substeps } = step;
   return (
@@ -31,7 +17,9 @@ export default function StepComponent({ index, step }: Props) {
           return (
             <SubStepWrapper>
               <p>{index + 1 + "." + (i + 1) + " - "}</p>
-              <CodeBlock text={substep.text} />
+              <Wrapper>
+                <CopyBlock text={substep.text} language={"pt-BR"} showLineNumbers={false} theme={dracula} customStyle={{ padding: "10px" }} />
+              </Wrapper>
             </SubStepWrapper>
           );
         } else {
