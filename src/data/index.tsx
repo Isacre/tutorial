@@ -32,9 +32,9 @@ export const Steps: Step[] = [
   {
     name: "Gerar chave SSH e cadastrar no github",
     substeps: [
-      { text: "digite o comando ssh-keygen", is_code: true },
+      { text: "ssh-keygen", is_code: true },
       { text: "de enter em tudo sem preencher", is_code: false },
-      { text: "após o sucesso digite o comando cat ~/.ssh/id_rsa.pub", is_code: true },
+      { text: "cat ~/.ssh/id_rsa.pub", is_code: true },
       { text: "copie o código que aparecerá no terminal", is_code: false },
       { text: "abra sua conta do github, va até as configurações em sua foto de perfil, busque pelo menu SSH and GPG keys", is_code: false },
       { text: "clique em new SSH key, de um nome para a chave e cole no campo key a chave que copiou do terminal", is_code: false },
@@ -50,7 +50,7 @@ export const Steps: Step[] = [
       { text: "reiniciar o terminal", is_code: false },
       { text: "wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh", is_code: true },
       { text: "chmod +x Miniconda3-latest-Linux-x86_64.sh", is_code: true },
-      { text: "./Miniconda3-latest-Linux-x86_64.sh -y", is_code: true },
+      { text: "./Miniconda3-latest-Linux-x86_64.sh", is_code: true },
     ],
   },
   {
@@ -72,9 +72,9 @@ export const Steps: Step[] = [
     substeps: [
       { text: "sudo service postgresql start", is_code: true },
       { text: "baixe e instale o beekeeper https://www.beekeeperstudio.io/get-community", is_code: false },
-      { text: "rode no seu wsl o seguinte comando: sudo -u postgres psql", is_code: false },
+      { text: "sudo -u postgres psql", is_code: true },
       { text: "cole esse comando no dialogo que irá abrir: ALTER USER postgres PASSWORD 'postgres';", is_code: false },
-      { text: "digite exit e pressione enter", is_code: false },
+      { text: "digite exit e pressione enter (se não funcionar tente contrabarra Q, como é mostrado)", is_code: false },
       { text: "crie um banco chamado triagil_production", is_code: false },
     ],
   },
@@ -101,7 +101,7 @@ export const Steps: Step[] = [
       { text: "copie ele para o WSL indo em linux > ubuntu-20.04 > home > seu user", is_code: false },
       { text: "no seu terminal digite cd ~", is_code: false },
       {
-        text: "rode o comando: pg_restore -j 8 -v -W --host=127.0.0.1 --port=5432 --username=postgres -Fd --clean -d triagil_production dump",
+        text: "pg_restore -j 8 -v -W --host=127.0.0.1 --port=5432 --username=postgres -Fd --clean -d triagil_production dump",
         is_code: true,
       },
     ],
